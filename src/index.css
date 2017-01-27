@@ -1,0 +1,311 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	background: #333;
+	color: #fff;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	font-family: 'open sans', sans-serif;
+	font-size: 14pt;
+}
+
+h1 {
+	margin-bottom: 10px;
+	font-size: 28pt;
+	font-weight: 300;
+}
+
+input,
+button {
+	font: inherit;
+}
+
+button {
+	padding: 7px 10px;
+
+	border: none;
+	background: #383;
+	color: #fff;
+}
+
+	button:disabled {
+		background: #444;
+		color: #888;
+	}
+
+.game-root {
+	width: 100%;
+	height: 100%;
+}
+
+.player-setup-area,
+.endgame-area {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	min-width: 100%;
+	min-height: 100%;
+}
+
+	.player-setup,
+	.game-result {
+		padding: 10px 20px 20px;
+		background: #222;
+	}
+
+	.player-list {
+		list-style-type: none;
+		min-height: 110px;
+	}
+
+		.player-list li {
+			margin-top: 4px;
+			margin-bottom: 4px;
+		}
+
+		.player-name-input {
+			padding: 3px 0 1px 0;
+			width: 300px;
+			border: none;
+			border-bottom: 2px solid #555;
+			background: transparent;
+			color: #fff;
+		}
+
+			.player-name-input--new {
+				width: 332px;
+			}
+
+			.player-name-input:focus {
+				border-color: #383;
+				outline: none;
+			}
+
+			.player-name-input::placeholder {
+				font-style: italic;
+				color: #777;
+			}
+
+		.player-delete-button {
+			padding: 3px 5px 1px 5px;
+			width: 32px;
+			border-bottom: 2px solid #555;
+			background: #222;
+		}
+
+			.player-name-input:focus + .player-delete-button {
+				border-color: #383;
+			}
+
+			.player-delete-button:hover:hover,
+			.player-delete-button:focus {
+				background: #c33;
+				border-color: #c33;
+			}
+
+	.player-setup p {
+		margin-top: 15px;
+	}
+
+	.game-result-body {
+		margin-bottom: 20px;
+	}
+
+	.winner-list {
+		margin-top: 5px;
+		margin-left: 30px;
+	}
+
+		.winning-player {
+			font-weight: bold;
+		}
+
+		.winning-player,
+		.score--final {
+			color: #8c8;
+			text-shadow: 0 0 6px rgba(204, 255, 204, 0.5);
+		}
+
+.game-area {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.game-board {
+	flex: none;
+	margin: 15px;
+	border-collapse: collapse;
+}
+
+	.game-board th {
+		padding: 3px 10px;
+		text-align: left;
+		font-weight: 400;
+	}
+
+		.game-board thead th {
+			text-align: center;
+		}
+
+		.game-board thead .player-current {
+			font-weight: 700;
+			color: #0c0;
+		}
+
+		.game-board tbody .player-current {
+			background: #223c22;
+		}
+
+	.game-board td {
+		padding: 2px 10px;
+		text-align: center;
+		min-width: 100px;
+	}
+
+		.game-board tbody td {
+			position: relative;
+			border: 1px solid #666;
+			cursor: default;
+		}
+
+	.category--derived th {
+		font-style: italic;
+	}
+
+	tbody .category--derived th,
+	tbody .category--derived td {
+		border-top: 3px solid #999;
+		border-bottom: 3px solid #999;
+	}
+
+		.category--bonus .score:not(.score--zero),
+		.category--yatzy .score:not(.score--zero):not(.score--new) {
+			text-shadow: 0 0 6px rgba(192, 255, 192, 0.9);
+			color: rgb(192, 255, 192);
+		}
+
+.confirm-zero-popup {
+	padding: 8px 12px;
+
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translate(-50%, 0%);
+
+	white-space: nowrap;
+
+	border-radius: 5px;
+	background: #444;
+	color: #fff;
+	pointer-events: none;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+	.confirm-zero-enter {
+		opacity: 0;
+	}
+
+		.confirm-zero-enter.confirm-zero-enter-active {
+			opacity: 1;
+			transition: opacity 50ms linear;
+		}
+
+	.confirm-zero-leave {
+		opacity: 1;
+	}
+
+		.confirm-zero-leave.confirm-zero-leave-active {
+			opacity: 0;
+			transition: opacity 300ms linear;
+		}
+
+.score--zero {
+	color: #777;
+}
+
+.score--new {
+	color: #3d0;
+}
+
+.score--new.score--zero {
+	color: #c00;
+}
+
+.dice-tray {
+	flex: none;
+	margin: 15px;
+}
+
+	.roll-button {
+		min-width: 140px;
+		height: 50px;
+		vertical-align: middle;
+	}
+
+		.roll-button + .die {
+			margin-left: 15px;
+		}
+
+	.die {
+		box-sizing: border-box;
+		display: inline-block;
+		margin: 0 5px;
+
+		width: 50px;
+		height: 50px;
+		text-align: center;
+		vertical-align: middle;
+
+		border: 3px solid #fff;
+		border-radius: 10px;
+		background-color: #555;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+
+		.die--held {
+			background-color: #383;
+		}
+
+		.die--d0 {
+			display: none;
+		}
+
+		.die--d1 {
+			background-image: url('../img/d1.svg');
+		}
+
+		.die--d2 {
+			background-image: url('../img/d2.svg');
+		}
+
+		.die--d3 {
+			background-image: url('../img/d3.svg');
+		}
+
+		.die--d4 {
+			background-image: url('../img/d4.svg');
+		}
+
+		.die--d5 {
+			background-image: url('../img/d5.svg');
+		}
+
+		.die--d6 {
+			background-image: url('../img/d6.svg');
+		}
