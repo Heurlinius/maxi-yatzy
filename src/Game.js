@@ -176,8 +176,8 @@ function shuffle(items) {
 }
 
 function getTumbleCount() {
-	// [5, 15)
-	return 5 + Math.floor(10 * Math.random());
+	// [5, 18)
+	return 5 + Math.floor(13 * Math.random());
 }
 
 function getDieRoll() {
