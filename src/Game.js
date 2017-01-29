@@ -50,8 +50,10 @@ export class Game extends Component {
 			return;
 		}
 
-		const rollingDice = this.state.heldDice.map((held, i) =>
-			held ? this.state.rollingDice[i] : getDieRoll()
+		const rollingDice = this.state.rollingDice.map((die, i) =>
+			this.state.rollingDiceTumbleCounts[i] === 0
+				? die
+				: getDieRoll()
 		);
 		const tumbleCounts = this.state.rollingDiceTumbleCounts
 			.map(c => Math.max(0, c - 1));
