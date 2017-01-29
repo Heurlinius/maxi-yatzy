@@ -8,6 +8,7 @@ This project was created mainly to learn some React basics, as an experiment and
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). See the [original readme file][cra-readme] for details.
 
+[yatzy]: https://en.wikipedia.org/wiki/Yatzy
 [react]: https://facebook.github.io/react/
 [cra-readme]: ./create-react-app-readme.md
 
